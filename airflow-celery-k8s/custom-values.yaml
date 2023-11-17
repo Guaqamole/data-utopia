@@ -201,6 +201,7 @@ logs:
   #  persistence:
   #    enabled: false
   persistence:
+    #enabled: false
     enabled: true
     storageClass: "nfs-client"
     size: 10Gi
@@ -222,7 +223,7 @@ dags:
     enabled: true
     storageClass: "nfs-client"
     size: 10Gi
-    accessMode: ReadWriteMany
+    accessMode: ReadOnlyMany
 
 
   ## configs for the git-sync sidecar
