@@ -45,6 +45,10 @@ metadata:
   namespace: es
 spec:
   version: 7.6.2
+  http:
+    service:
+      spec:
+        type: NodePort
   transport:
     service:
       spec:

@@ -6,6 +6,10 @@ metadata:
 spec:
   version: 7.6.2
   count: 1
+  http:
+    service:
+      spec:
+        type: NodePort
   elasticsearchRef:
     name: elasticsearch
     namespace: es
