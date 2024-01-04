@@ -1,0 +1,31 @@
+---
+clusterName: "elasticsearch"
+nodeGroup: "data"
+namespace: "es-cluster"
+
+roles:
+  - data
+  - data_content
+  - data_hot
+  - data_warm
+  - data_cold
+  - data_frozen
+  - ingest
+
+secret:
+  enabled: true
+  password: "elastic"
+
+resources:
+  requests:
+    cpu: "512m"
+    memory: "1Gi"
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 50Gi

@@ -1,0 +1,46 @@
+
+clusterName: "elasticsearch"
+nodeGroup: "master"
+namespace: "es-cluster"
+replicas: 1
+minimumMasterNodes: 1
+
+roles:
+  - master
+
+secret:
+  enabled: true
+  password: "elastic"
+
+
+hostAliases: []
+  #- ip: "192.168.51.190"
+
+service:
+  enabled: true
+  labels: {}
+  labelsHeadless: {}
+  type: NodePort
+  publishNotReadyAddresses: false
+  nodePort: ""
+  annotations: {}
+  httpPortName: http
+  transportPortName: transport
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  externalTrafficPolicy: ""
+
+
+resources:
+  requests:
+    cpu: "512m"
+    memory: "1Gi"
+  limits:
+    cpu: "1000m"
+    memory: "2Gi"
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 50Gi

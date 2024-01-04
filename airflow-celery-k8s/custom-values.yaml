@@ -55,7 +55,7 @@ airflow:
   ## extra pip packages to install in airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/configuration/extra-python-packages.md
   ## [WARNING] this feature is not recommended for production use, see docs
-  extraPipPackages: []
+  extraPipPackages: ['apache-airflow-providers-apache-spark']
 
   ## extra environment variables for the airflow Pods
   ## [FAQ] https://github.com/airflow-helm/charts/blob/main/charts/airflow/docs/faq/kubernetes/mount-environment-variables.md
