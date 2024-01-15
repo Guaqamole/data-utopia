@@ -1,4 +1,12 @@
-kubectl apply -f es.yaml
-kubectl apply -f kibana.yaml
+kubectl apply -f ./conf/es.yaml
 
-./password.sh
+sleep 5
+kubectl apply -f ./conf/logstash.yml
+
+sleep 15
+kubectl apply -f ./conf/kibana.yaml
+
+sleep 5
+kubectl apply -f ./conf/mysql.yml
+
+./scripts/password.sh

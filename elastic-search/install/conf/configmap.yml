@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: es
+  name: logstash-configmap
+  labels:
+    task: logging
+    k8s-app: logstash
+data:
+  logstash.yml: |
+    http.host: "127.0.0.0"
+    path.config: /usr/share/logstash/pipeline
+  logstash.conf:
+    input
+    {
+      jdbc
+      {
+        jdbc_driver_library => "/mnt/mysql-connector-j-8.2.0.jar"
+        jdbc_driver_class => "com.mysql.cj.jdbc.Driver"
+        jdbc_connection_string => "jdbc:mysql://192.168.51.212:3306/employees"
+        jdbc_user => "root"
+        jdbc_password => "1234"
+        schedule => "* * * * *"
+        statement_filepath => "/mnt/employees.sql"
+      }
+    }
+    filter
+    {}
+    output
+    {
+      elasticsearch
+      {
+        hosts => ["http://192.168.51.213:9200"]
+        user => "elastic"
+        password => "N9F94F7K35XR36p9nfzKZv9F"
+        ssl_certificate_verification => false
+        manage_template => false
+        index => "my_employees"
+        document_type => "doc"
+      }
+    }
+
+
