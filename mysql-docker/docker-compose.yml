@@ -1,0 +1,16 @@
+version: '3'  # compose 파일 버전
+services:
+    mysql: # 서비스 명
+        image: mysql:8.0
+        restart: always # 컨테이너 실행 시 재시작
+        container_name: mysql
+        ports:
+          - "3306:3306" # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)   
+        environment:
+            MYSQL_ROOT_PASSWORD: passowrd
+            TZ: Asia/Seoul
+        command:
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - /mnt/docker/mysql:/var/lib/mysql
